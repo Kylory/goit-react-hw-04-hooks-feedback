@@ -1,55 +1,64 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import FeedbackOptions from './Components/FeedbackOptions/FeedbackOptions';
 import Statistics from './Components/Statistics/Statistics';
 // import Notification from './Components/Notification/Notification';
 
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+const App = () => {
+  const [stateGood, setStateGood] = useState(0);
+  const [stateNeutral, setStateNeutral] = useState(0);
+  const [stateBad, setStateBad] = useState(0);
+
+  const countTotalFeedback = (stateGood, stateNeutral, stateBad) => {
+    return stateGood + stateNeutral + stateBad;
   };
 
-  static defaultProps = {};
-  static propTypes = {};
-
-  countTotalFeedback = (good, neutral, bad) => {
-    return good + neutral + bad;
+  const countPositiveFeedbackPercentage = (
+    stateGood,
+    stateNeutral,
+    stateBad,
+  ) => {
+    return 100 / ((stateGood + stateNeutral + stateBad) / stateGood) + '%';
   };
 
-  countPositiveFeedbackPercentage = (good, neutral, bad) => {
-    return 100 / ((good + neutral + bad) / good) + '%';
+  const onLeaveFeedback = option => {
+    switch (option) {
+      case 'good':
+        console.log(option);
+        setStateGood(stateGood + 1);
+        break;
+
+      case 'neutral':
+        console.log(option);
+        setStateNeutral(stateNeutral + 1);
+        break;
+
+      case 'bad':
+        console.log(option);
+        setStateBad(stateBad + 1);
+        break;
+
+      default:
+        break;
+    }
   };
 
-  onLeaveFeedback = option => {
-    this.setState(prevState => {
-      return { [option]: prevState[option] + 1 };
-    });
-  };
-
-  render() {
-    return (
-      <>
-        <FeedbackOptions
-          title="Please leave feedback"
-          options={['good', 'neutral', 'bad']}
-          onLeaveFeedback={this.onLeaveFeedback}
-        />
-        <Statistics
-          title="Statistics"
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback}
-          positivePercentage={this.countPositiveFeedbackPercentage}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <FeedbackOptions
+        title="Please leave feedback"
+        options={['good', 'neutral', 'bad']}
+        onLeaveFeedback={onLeaveFeedback}
+      />
+      <Statistics
+        title="Statistics"
+        good={stateGood}
+        neutral={stateNeutral}
+        bad={stateBad}
+        total={countTotalFeedback}
+        positivePercentage={countPositiveFeedbackPercentage}
+      />
+    </>
+  );
+};
 
 export default App;
-
-//Створи компонент <Section title="">, який рендерить секцію з заголовком
-// і дітей(children).Оберни кожен з < Statistics > і < FeedbackOptions >
-// в створений компонент секції.
