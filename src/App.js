@@ -22,18 +22,15 @@ const App = () => {
   const onLeaveFeedback = option => {
     switch (option) {
       case 'good':
-        console.log(option);
-        setStateGood(stateGood + 1);
+        setStateGood(prevState => prevState + 1);
         break;
 
       case 'neutral':
-        console.log(option);
-        setStateNeutral(stateNeutral + 1);
+        setStateNeutral(prevState => prevState + 1);
         break;
 
       case 'bad':
-        console.log(option);
-        setStateBad(stateBad + 1);
+        setStateBad(prevState => prevState + 1);
         break;
 
       default:
