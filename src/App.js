@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import FeedbackOptions from './Components/FeedbackOptions/FeedbackOptions';
 import Statistics from './Components/Statistics/Statistics';
-// import Notification from './Components/Notification/Notification';
 
 const App = () => {
   const [stateGood, setStateGood] = useState(0);

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FeedbackOptions = ({ title, options, onLeaveFeedback }) => {
   return (
     <ul>

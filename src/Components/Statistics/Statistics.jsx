@@ -1,6 +1,4 @@
-import React from 'react';
 import Notification from '../Notification/Notification';
-import Section from '../Section/Section';
 
 const Statistics = ({
   title,
