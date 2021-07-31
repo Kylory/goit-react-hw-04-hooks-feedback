@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,MAEE,eAAgB,CAChB,cAEF,CAEA,QAHE,iBAKF","file":"main.d2147af7.chunk.css","sourcesContent":["li,\r\nul {\r\n  list-style: none;\r\n  margin-top: 7px;\r\n  padding-left: 10px;\r\n}\r\n\r\np {\r\n  padding-left: 10px;\r\n}\r\n"]}
